@@ -1,0 +1,149 @@
+/* src/index.css */
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: #f3f4f6;
+}
+
+.app .topbar {
+  background: #111827;
+  color: white;
+  padding: 0.75rem 1.25rem;
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 1.5rem auto;
+  padding: 0 1rem;
+}
+
+.shopping-page .layout {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 1.5rem;
+}
+
+.list-header {
+  margin-bottom: 1rem;
+}
+
+.title-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.title-row h2 {
+  margin: 0;
+}
+
+.title-row button {
+  font-size: 0.8rem;
+}
+
+.muted {
+  color: #6b7280;
+  font-size: 0.85rem;
+}
+
+.items-filter {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.items-filter button {
+  border: 1px solid #d1d5db;
+  background: white;
+  border-radius: 9999px;
+  padding: 0.25rem 0.9rem;
+  cursor: pointer;
+}
+
+.items-filter .active {
+  background: #111827;
+  color: white;
+}
+
+.items-list {
+  background: white;
+  border-radius: 0.5rem;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.item-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.35rem 0;
+}
+
+.item-row .done {
+  text-decoration: line-through;
+  color: #9ca3af;
+}
+
+.item-row button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.new-item-form {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.new-item-form input {
+  flex: 1;
+}
+
+.members-panel {
+  background: white;
+  border-radius: 0.5rem;
+  padding: 0.75rem;
+}
+
+.members-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 0.75rem;
+}
+
+.members-list li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.4rem;
+}
+
+.badge {
+  background: #e5e7eb;
+  border-radius: 9999px;
+  padding: 0 0.5rem;
+  font-size: 0.7rem;
+}
+
+.small-btn {
+  border: none;
+  background: #fee2e2;
+  color: #b91c1c;
+  padding: 0.1rem 0.5rem;
+  border-radius: 9999px;
+  font-size: 0.7rem;
+  cursor: pointer;
+}
+
+.add-member-row {
+  display: flex;
+  gap: 0.5rem;
+}
