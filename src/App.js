@@ -1,7 +1,14 @@
-import { Routes, Route, Link } from "react-router-dom";
+// src/App.js
+import { useState } from "react";
+import { Routes, Route, Link, Navigate } from "react-router-dom";
+import { SHOPPING_LISTS } from "./data";
 import ShoppingListPage from "./pages/ShoppingListPage";
+import ListsOverview from "./pages/ListsOverview";
 
 export default function App() {
+  // общий state для всех списков
+  const [lists, setLists] = useState(SHOPPING_LISTS);
+
   return (
     <div className="app">
       <header className="topbar">
@@ -12,22 +19,20 @@ export default function App() {
 
       <main className="container">
         <Routes>
-          <Route path="/lists/:id" element={<ShoppingListPage />} />
-
+          {/* overview всех списков */}
           <Route
-            path="/"
-            element={
-              <div>
-                <h1>Welcome 👋</h1>
-                <p>
-                  Open route: <code>/lists/1</code> or <code>/lists/2</code>
-                </p>
-                <p>
-                  <Link to="/lists/1">Go to List #1</Link>
-                </p>
-              </div>
-            }
+            path="/lists"
+            element={<ListsOverview lists={lists} setLists={setLists} />}
           />
+
+          {/* detail одного списка */}
+          <Route
+            path="/lists/:id"
+            element={<ShoppingListPage lists={lists} setLists={setLists} />}
+          />
+
+          {/* редирект с корня на /lists */}
+          <Route path="/" element={<Navigate to="/lists" replace />} />
         </Routes>
       </main>
     </div>

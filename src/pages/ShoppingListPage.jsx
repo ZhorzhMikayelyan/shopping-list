@@ -7,11 +7,11 @@ import ItemsList from "../components/ItemsList";
 import NewItemForm from "../components/NewItemForm";
 import MembersPanel from "../components/MembersPanel";
 
-export default function ShoppingListPage() {
+export default function ShoppingListPage({ lists, setLists }) {
   const { id } = useParams();
   const navigate = useNavigate();
 
-  const initialList = SHOPPING_LISTS.find((l) => l.id === id);
+  const initialList = lists.find((l) => l.id === id);
   const [list, setList] = useState(initialList);
   const [filter, setFilter] = useState("all");
 
