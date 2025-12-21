@@ -2,62 +2,113 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>How to run the project</title>
+  <title>Shopping Lists (Frontend) – Teacher README</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
-    body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      max-width: 800px;
-      margin: 2rem auto;
-      line-height: 1.6;
-      color: #111827;
-    }
-    h1 {
-      margin-bottom: 0.75rem;
-    }
-    code {
-      background: #f3f4f6;
-      padding: 0.15rem 0.35rem;
-      border-radius: 4px;
-    }
-    pre {
-      background: #0f172a;
-      color: #e5e7eb;
-      padding: 0.75rem 1rem;
-      border-radius: 6px;
-      overflow-x: auto;
-    }
-    li + li {
-      margin-top: 0.25rem;
-    }
+    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;max-width:980px;margin:24px auto;line-height:1.6;color:#111}
+    h1{margin:0 0 6px}
+    .muted{color:#555}
+    code{background:#f3f4f6;padding:2px 6px;border-radius:4px}
+    pre{background:#0f172a;color:#e5e7eb;padding:12px 14px;border-radius:8px;overflow:auto}
+    .box{border:1px solid #e5e7eb;background:#fafafa;padding:12px 14px;border-radius:8px;margin:12px 0}
+    ul{margin:6px 0 0}
+    li{margin:4px 0}
+    .ok{font-weight:700}
   </style>
 </head>
 <body>
-  <h1>How to run the project</h1>
 
-  <h2>1. Install dependencies</h2>
-  <p>In the root folder of the project, run:</p>
-  <pre><code>npm install</code></pre>
+<h1>Shopping Lists – Frontend submission</h1>
+<div class="muted">Teacher instructions: how to run and how to verify requirements</div>
 
-  <h2>2. Start the development server</h2>
-  <p>Then run:</p>
-  <pre><code>npm start</code></pre>
-  <p>
-    This will open the application in the browser at
-    <code>http://localhost:3000</code>.
-  </p>
-
-  <h2>3. Main routes</h2>
+<div class="box">
+  <div class="ok">Project goal</div>
   <ul>
-    <li><code>/lists</code> – overview of all shopping lists (tiles, add, delete).</li>
-    <li><code>/lists/:id</code> – detail of a single shopping list.</li>
+    <li>Frontend communicates with the backend (load/save data via server API).</li>
+    <li>Frontend can run in <strong>Mock mode</strong> (server calls are mocked by local mock data).</li>
+    <li>UI improvements: charts (statistics), Light/Dark mode, responsive layout, multilingual UI (EN/CZ).</li>
   </ul>
+</div>
 
-  <h2>4. Build (optional)</h2>
-  <p>To create a production build, run:</p>
-  <pre><code>npm run build</code></pre>
-  <p>
-    The optimized build will be generated in the <code>build/</code> folder.
-  </p>
+<h2>1) How to run the project</h2>
+
+<p><strong>Requirements:</strong> Node.js + npm installed.</p>
+
+<ol>
+  <li>Open terminal in the project folder (where <code>package.json</code> is).</li>
+  <li>Install dependencies:</li>
+</ol>
+
+<pre><code>npm install</code></pre>
+
+<ol start="3">
+  <li>Start development server:</li>
+</ol>
+
+<pre><code>npm start</code></pre>
+
+<p>The application will open in the browser (usually <code>http://localhost:3000</code>).</p>
+
+<h2>2) Mock mode vs Real backend</h2>
+
+<div class="box">
+  <div class="ok">Mock mode (recommended for quick evaluation)</div>
+  <ul>
+    <li>In the top right corner there is a toggle: <code>Mock mode: ON/OFF</code>.</li>
+    <li>When Mock mode is <strong>ON</strong>, the app uses built-in mock data and does not require backend.</li>
+  </ul>
+</div>
+
+<div class="box">
+  <div class="ok">Real backend mode</div>
+  <ul>
+    <li>Set <code>Mock mode</code> to <strong>OFF</strong>.</li>
+    <li>Make sure backend is running at <code>REACT_APP_API_BASE_URL</code> (default: <code>http://localhost:3001</code>).</li>
+    <li>If backend is not running, the UI will show a fetch error (expected behavior).</li>
+  </ul>
+</div>
+
+<h2>3) What to test (requirements checklist)</h2>
+
+<h3>A) Communication with server (backend)</h3>
+<ul>
+  <li>Switch <code>Mock mode</code> to <strong>OFF</strong> and ensure backend is running.</li>
+  <li>Open <strong>Lists overview</strong> – lists are loaded from server.</li>
+  <li>Create a new list using <strong>Add new list</strong>.</li>
+  <li>Delete a list – confirmation dialog is shown.</li>
+</ul>
+
+<h3>B) Mocking server calls</h3>
+<ul>
+  <li>Switch <code>Mock mode</code> to <strong>ON</strong>.</li>
+  <li>Verify that lists are loaded from mock data.</li>
+  <li>Create/delete actions work in mock mode as well.</li>
+</ul>
+
+<h3>C) Charts / statistics</h3>
+<ul>
+  <li>Open a specific shopping list detail page (click any tile).</li>
+  <li>Verify the pie chart shows <strong>Solved vs Unsolved</strong> items.</li>
+  <li>In overview, item counts are displayed (visual bar + count).</li>
+</ul>
+
+<h3>D) UI improvements</h3>
+<ul>
+  <li><strong>Light/Dark</strong>: switch theme using the toggle in the top bar.</li>
+  <li><strong>Responsive layout</strong>: resize browser window – layout adapts.</li>
+  <li><strong>Multilingual UI</strong>: switch language (EN/CZ). Data content (list names/items) remains unchanged.</li>
+</ul>
+
+<h2>4) Environment notes</h2>
+
+<p>The frontend reads configuration from <code>.env</code> (Create React App):</p>
+
+<pre><code>REACT_APP_API_BASE_URL=http://localhost:3001
+REACT_APP_USE_MOCK=false</code></pre>
+
+<p>
+Mock mode can be switched at runtime via UI toggle (top right).
+</p>
+
 </body>
 </html>
